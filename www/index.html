@@ -34,6 +34,7 @@
 
     <div class="w-full max-w-md bg-slate-900 min-h-screen flex flex-col justify-between relative shadow-2xl border-x border-slate-800">
         
+        <!-- الشريط العلوي -->
         <header class="p-4 bg-slate-900/90 backdrop-blur-md sticky top-0 z-20 border-b border-slate-800 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center font-bold text-white shadow-lg">C2</div>
@@ -48,117 +49,196 @@
             </div>
         </header>
 
+        <!-- المحتوى الرئيسي -->
         <main class="flex-1 overflow-y-auto p-4 pb-24" id="app-content">
+            
+            <!-- 1. شاشة المستويات -->
             <section id="screen-levels" class="space-y-4">
                 <div class="glass-card p-4 rounded-2xl bg-gradient-to-l from-indigo-900/40 to-slate-800/40">
                     <h2 class="font-bold text-lg text-white mb-1">رحلتك نحو الإتقان التام (C2)</h2>
                     <p class="text-xs text-slate-300 leading-relaxed">منهج تفاعلي يعتمد على الاستماع المكثف والمحادثة الفورية للوصول لمستوى المتحدث الأصلي.</p>
                 </div>
 
-                <div onclick="selectLevel('A1 - A2', 'التأسيس')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-emerald-500/50 transition">
+                <div onclick="selectLevel('A1 - A2')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-emerald-500/50 transition">
                     <span class="px-2.5 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-lg">المستوى الأول (A1 - A2)</span>
                     <h3 class="font-bold text-base text-white mt-2 mb-1">التأسيس وبناء القاعدة اللغوية</h3>
                     <p class="text-xs text-slate-400">أكثر من 1,500 جملة أساسية والنطق السليم.</p>
                 </div>
 
-                <div onclick="selectLevel('B1 - B2', 'الطلاقة')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-cyan-500/50 transition">
+                <div onclick="selectLevel('B1 - B2')" class="glass-card p-4 rounded-2xl cursor-pointer hover:border-cyan-500/50 transition">
                     <span class="px-2.5 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-bold rounded-lg">المستوى الثاني (B1 - B2)</span>
                     <h3 class="font-bold text-base text-white mt-2 mb-1">الطلاقة العملية والتفاعل</h3>
                     <p class="text-xs text-slate-400">محادثات العمل والسفر وكسر حاجز الخوف.</p>
                 </div>
 
-                <div onclick="selectLevel('C1 - C2', 'الإتقان التام')" class="glass-card p-4 rounded-2xl cursor-pointer border-indigo-500/40 hover:border-indigo-400 transition">
+                <div onclick="selectLevel('C1 - C2')" class="glass-card p-4 rounded-2xl cursor-pointer border-indigo-500/40 hover:border-indigo-400 transition">
                     <span class="px-2.5 py-1 bg-indigo-500/20 text-indigo-300 text-xs font-bold rounded-lg">المستوى الثالث (C1 - C2)</span>
                     <h3 class="font-bold text-base text-white mt-2 mb-1">الإتقان التام ومستوى المتحدث الأصلي</h3>
                     <p class="text-xs text-slate-400">التعبيرات الاصطلاحية والمناظرات الفكرية.</p>
                 </div>
             </section>
 
-            <section id="screen-coach" class="hidden flex flex-col h-full">
-                <div class="glass-card p-3 rounded-xl mb-3 flex justify-between items-center">
+            <!-- 2. شاشة المدرب الذكي -->
+            <section id="screen-coach" class="hidden flex flex-col h-full space-y-3">
+                <div class="glass-card p-3 rounded-xl flex justify-between items-center">
                     <div>
                         <span class="text-xs text-slate-400 block">السيناريو:</span>
                         <span class="text-sm font-bold text-cyan-400" id="chat-scenario">نقاش احترافي C2</span>
                     </div>
                 </div>
 
-                <div id="chat-box" class="flex-1 space-y-3 overflow-y-auto mb-4 min-h-[340px] max-h-[420px] p-1">
+                <div id="chat-box" class="flex-1 space-y-3 overflow-y-auto mb-2 min-h-[320px] max-h-[380px] p-1">
                     <div class="flex flex-col items-start">
-                        <div class="bg-slate-800 border border-slate-700 p-3.5 rounded-2xl rounded-tl-none max-w-[85%]">
+                        <div class="bg-slate-800 border border-slate-700 p-3.5 rounded-2xl rounded-tl-none max-w-[90%]">
                             <p class="en-text text-sm text-white mb-1.5">Hello! I am your C2 AI Coach. Tell me, what is a complex challenge you recently overcame?</p>
-                            <button onclick="speakText('Hello! I am your C2 AI Coach. Tell me, what is a complex challenge you recently overcame?')" class="mt-2 text-xs text-cyan-400">🔊 استمع للنطق</button>
+                            <button onclick="speakText('Hello! I am your C2 AI Coach. Tell me, what is a complex challenge you recently overcame?')" class="mt-2 text-xs text-cyan-400 flex items-center gap-1">🔊 استمع للنطق</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="glass-card p-2.5 rounded-2xl flex items-center gap-2">
                     <input type="text" id="user-input" placeholder="اكتب ردك بالإنجليزية..." class="en-text flex-1 bg-transparent text-sm text-white px-2 focus:outline-none">
-                    <button onclick="sendMessage()" class="w-11 h-11 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold">➤</button>
+                    <button onclick="sendMessage()" class="w-11 h-11 rounded-xl bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center text-white font-bold shrink-0">➤</button>
                 </div>
             </section>
 
+            <!-- 3. شاشة المكتبة -->
             <section id="screen-library" class="hidden space-y-3">
+                <div class="flex gap-2 overflow-x-auto pb-1">
+                    <button onclick="filterLibrary('all')" class="px-3 py-1.5 rounded-xl bg-indigo-600 text-xs font-bold text-white shrink-0">الكل</button>
+                    <button onclick="filterLibrary('C2')" class="px-3 py-1.5 rounded-xl bg-slate-800 text-xs font-semibold text-slate-300 shrink-0">C2</button>
+                    <button onclick="filterLibrary('Business')" class="px-3 py-1.5 rounded-xl bg-slate-800 text-xs font-semibold text-slate-300 shrink-0">أعمال</button>
+                </div>
                 <div id="library-list" class="space-y-3"></div>
             </section>
+
         </main>
 
-        <nav class="bg-slate-900/95 border-t border-slate-800 p-2 flex justify-around items-center sticky bottom-0 z-20">
+        <!-- شريط التنقل السفلي -->
+        <nav class="bg-slate-900/95 backdrop-blur-md border-t border-slate-800 p-2 flex justify-around items-center sticky bottom-0 z-20">
             <button onclick="switchTab('levels')" id="nav-levels" class="flex flex-col items-center p-2 text-indigo-400 font-bold">
-                <span class="text-xl">🎯</span><span class="text-[11px]">المستويات</span>
+                <span class="text-xl mb-0.5">🎯</span>
+                <span class="text-[11px]">المستويات</span>
             </button>
-            <button onclick="switchTab('coach')" id="nav-coach" class="flex flex-col items-center p-2 text-slate-400">
-                <span class="text-xl">🎙️</span><span class="text-[11px]">المدرب</span>
+            <button onclick="switchTab('coach')" id="nav-coach" class="flex flex-col items-center p-2 text-slate-400 hover:text-white">
+                <span class="text-xl mb-0.5">🎙️</span>
+                <span class="text-[11px]">المدرب</span>
             </button>
-            <button onclick="switchTab('library')" id="nav-library" class="flex flex-col items-center p-2 text-slate-400">
-                <span class="text-xl">📚</span><span class="text-[11px]">المكتبة</span>
+            <button onclick="switchTab('library')" id="nav-library" class="flex flex-col items-center p-2 text-slate-400 hover:text-white">
+                <span class="text-xl mb-0.5">📚</span>
+                <span class="text-[11px]">المكتبة</span>
             </button>
         </nav>
+
     </div>
 
     <script>
         const sentencesDB = [
-            { level: "C2", en: "To cut a long story short, the paradigm shift yielded unprecedented results.", ar: "باختصار، أحدث التحول الجذري نتائج غير مسبوقة." },
-            { level: "B2", en: "Could you walk me through the root cause analysis?", ar: "هل يمكنك شرح تحليل السبب الجذري؟" }
+            { level: "C2", category: "C2", en: "To cut a long story short, the paradigm shift yielded unprecedented results.", ar: "باختصار، أحدث التحول الجذري نتائج غير مسبوقة." },
+            { level: "B2", category: "Business", en: "Could you walk me through the root cause analysis?", ar: "هل يمكنك شرح تحليل السبب الجذري؟" },
+            { level: "C1", category: "C2", en: "Her eloquence and command of nuances made her argument irrefutable.", ar: "فصاحتها وإتقانها للفروق الدقيقة جعلا حجتها غير قابلة للدحض." }
         ];
 
-        function switchTab(tab) {
+        let xp = 1250;
+
+        function switchTab(tabName) {
             ['levels', 'coach', 'library'].forEach(t => {
-                document.getElementById(`screen-${t}`).classList.add('hidden');
-                document.getElementById(`nav-${t}`).className = 'flex flex-col items-center p-2 text-slate-400';
+                const screen = document.getElementById(`screen-${t}`);
+                const nav = document.getElementById(`nav-${t}`);
+                if(screen) screen.classList.add('hidden');
+                if(nav) {
+                    nav.classList.remove('text-indigo-400', 'font-bold');
+                    nav.classList.add('text-slate-400');
+                }
             });
-            document.getElementById(`screen-${tab}`).classList.remove('hidden');
-            document.getElementById(`nav-${tab}`).className = 'flex flex-col items-center p-2 text-indigo-400 font-bold';
-            if (tab === 'library') renderLibrary();
+
+            const activeScreen = document.getElementById(`screen-${tabName}`);
+            const activeNav = document.getElementById(`nav-${tabName}`);
+            if(activeScreen) activeScreen.classList.remove('hidden');
+            if(activeNav) {
+                activeNav.classList.add('text-indigo-400', 'font-bold');
+                activeNav.classList.remove('text-slate-400');
+            }
+
+            if (tabName === 'library') renderLibrary('all');
         }
 
-        function selectLevel(code) { switchTab('coach'); }
-
-        function renderLibrary() {
-            const list = document.getElementById('library-list');
-            list.innerHTML = sentencesDB.map(s => `
-                <div class="glass-card p-3 rounded-xl space-y-1">
-                    <span class="text-xs text-indigo-400 font-bold">${s.level}</span>
-                    <p class="en-text text-sm text-white">${s.en}</p>
-                    <p class="text-xs text-slate-400">${s.ar}</p>
-                </div>
-            `).join('');
+        function selectLevel(levelCode) {
+            document.getElementById('current-level-badge').innerText = `المستوى النشط: ${levelCode}`;
+            switchTab('coach');
         }
 
-        function speakText(txt) {
-            const u = new SpeechSynthesisUtterance(txt);
-            u.lang = 'en-US';
-            window.speechSynthesis.speak(u);
+        function renderLibrary(filter) {
+            const container = document.getElementById('library-list');
+            if(!container) return;
+            container.innerHTML = '';
+
+            const filtered = filter === 'all' ? sentencesDB : sentencesDB.filter(item => item.category === filter || item.level === filter);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass-card p-3 rounded-xl space-y-2';
+                card.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="px-2 py-0.5 bg-indigo-500/20 text-indigo-300 text-[11px] font-bold rounded">${item.level}</span>
+                        <button onclick="speakText(\`${item.en}\`)" class="bg-slate-800 hover:bg-indigo-600 text-white text-xs px-3 py-1 rounded-lg transition">🔊 استماع</button>
+                    </div>
+                    <p class="en-text text-sm font-semibold text-white">${item.en}</p>
+                    <p class="text-xs text-slate-400 border-t border-slate-800 pt-1">${item.ar}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterLibrary(cat) {
+            renderLibrary(cat);
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
         }
 
         function sendMessage() {
             const input = document.getElementById('user-input');
-            if(!input.value.trim()) return;
-            const box = document.getElementById('chat-box');
-            box.innerHTML += `<div class="flex justify-end"><div class="bg-indigo-600 text-white p-3 rounded-2xl max-w-[85%]"><p class="en-text text-sm">${input.value}</p></div></div>`;
+            if(!input || !input.value.trim()) return;
+            const text = input.value.trim();
+            const chatBox = document.getElementById('chat-box');
+
+            chatBox.innerHTML += `
+                <div class="flex justify-end">
+                    <div class="bg-indigo-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[85%]">
+                        <p class="en-text text-sm">${text}</p>
+                    </div>
+                </div>
+            `;
             input.value = '';
-            box.scrollTop = box.scrollHeight;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            xp += 15;
+            const xpEl = document.getElementById('xp-counter');
+            if(xpEl) xpEl.innerText = `${xp.toLocaleString()} XP`;
+
+            setTimeout(() => {
+                chatBox.innerHTML += `
+                    <div class="flex flex-col items-start">
+                        <div class="bg-slate-800 border border-slate-700 p-3.5 rounded-2xl rounded-tl-none max-w-[90%] space-y-1">
+                            <p class="en-text text-sm text-white">That is a brilliant insight! Your progression toward C2 fluency is evident.</p>
+                            <span class="text-[10px] text-cyan-400 block">✨ صياغة مقترحة: "We optimized the operational workflow."</span>
+                        </div>
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 600);
         }
+
+        document.getElementById('user-input')?.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
+        });
     </script>
 </body>
-              </html>
-              
+</html>
