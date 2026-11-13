@@ -28,10 +28,12 @@ jobs:
       run: |
         npm install
 
-    - name: Prepare Web Assets Directory (www)
+    # هذه الخطوة هي التي تحل المشكلة: تقوم بإنشاء مجلد www وتضع داخله index.html تلقائياً
+    - name: Create www directory and copy web assets
       run: |
         mkdir -p www
         cp index.html www/
+        echo "Web assets prepared successfully in www directory"
 
     - name: Initialize Capacitor Android Platform
       run: |
