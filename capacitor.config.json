@@ -1,0 +1,6 @@
+{
+  "appId": "com.english.ai.app",
+  "appName": "FluentC2 AI",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
