@@ -28,9 +28,6 @@ jobs:
       run: |
         npm install
 
-    # هذه الخطوة هي التي تحل المشكلة: تقوم بإنشاء مجلد www وتضع داخله index.html تلقائياً
-    
-
     - name: Initialize Capacitor Android Platform
       run: |
         npx cap add android
